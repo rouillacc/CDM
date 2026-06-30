@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coupe du Monde de Rouillac 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%271200%27%20height%3D%27800%27%3E%0A%20%20%3C%21--%20Fond%20vert%20gazon%20--%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3Cpattern%20id%3D%27gazon%27%20x%3D%270%27%20y%3D%270%27%20width%3D%2760%27%20height%3D%2760%27%20patternUnits%3D%27userSpaceOnUse%27%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2760%27%20height%3D%2760%27%20fill%3D%27%2523237a3c%27/%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2730%27%20height%3D%2760%27%20fill%3D%27%25231e6e35%27/%3E%0A%20%20%20%20%3C/pattern%3E%0A%20%20%3C/defs%3E%0A%20%20%3Crect%20width%3D%27100%2525%27%20height%3D%27100%2525%27%20fill%3D%27url%28%2523gazon%29%27/%3E%0A%20%20%3C%21--%20Lignes%20du%20terrain%20--%3E%0A%20%20%3Crect%20x%3D%2780%27%20y%3D%2760%27%20width%3D%271040%27%20height%3D%27680%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-width%3D%274%27%20opacity%3D%270.6%27/%3E%0A%20%20%3Ccircle%20cx%3D%27600%27%20cy%3D%27400%27%20r%3D%27120%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-width%3D%274%27%20opacity%3D%270.6%27/%3E%0A%20%20%3Cline%20x1%3D%27600%27%20y1%3D%2760%27%20x2%3D%27600%27%20y2%3D%27740%27%20stroke%3D%27white%27%20stroke-width%3D%274%27%20opacity%3D%270.6%27/%3E%0A%20%20%3Crect%20x%3D%2780%27%20y%3D%27270%27%20width%3D%27180%27%20height%3D%27260%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-width%3D%273%27%20opacity%3D%270.6%27/%3E%0A%20%20%3Crect%20x%3D%27940%27%20y%3D%27270%27%20width%3D%27180%27%20height%3D%27260%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-width%3D%273%27%20opacity%3D%270.6%27/%3E%0A%20%20%3C%21--%20Ballons%20de%20foot%20SVG%20%28unicode%20simul%C3%A9%20par%20cercles%29%20--%3E%0A%20%20%3Ccircle%20cx%3D%27200%27%20cy%3D%27150%27%20r%3D%2730%27%20fill%3D%27white%27%20opacity%3D%270.12%27/%3E%0A%20%20%3Ccircle%20cx%3D%271000%27%20cy%3D%27650%27%20r%3D%2725%27%20fill%3D%27white%27%20opacity%3D%270.10%27/%3E%0A%20%20%3Ccircle%20cx%3D%27900%27%20cy%3D%27120%27%20r%3D%2720%27%20fill%3D%27white%27%20opacity%3D%270.09%27/%3E%0A%20%20%3Ccircle%20cx%3D%27150%27%20cy%3D%27600%27%20r%3D%2722%27%20fill%3D%27white%27%20opacity%3D%270.10%27/%3E%0A%20%20%3Ccircle%20cx%3D%27600%27%20cy%3D%2790%27%20r%3D%2718%27%20fill%3D%27white%27%20opacity%3D%270.08%27/%3E%0A%3C/svg%3E") center center fixed;
+            background-size: cover;
+            background-color: #1e6e35;
+            padding: 20px;
+            color: #333;
+        }
+        /* Ballons animés flottants */
+        .ballon {
+            position: fixed; font-size: 2.2em; opacity: 0.18; z-index: 0;
+            animation: float linear infinite;
+            pointer-events: none;
+        }
+        @keyframes float {
+            0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10%  { opacity: 0.18; }
+            90%  { opacity: 0.18; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+        .header-app {
+            position: relative; z-index: 1;
+            text-align: center; background: rgba(255,255,255,0.95);
+            padding: 20px 25px; border-radius: 15px; margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35); border-bottom: 5px solid #28a745;
+        }
+        .header-app h1 { color: #1a5f7a; font-size: 2em; text-transform: uppercase; }
+        .header-app p { font-size: 1em; color: #555; margin-top: 5px; }
+        .compteur {
+            display: inline-block; background: #28a745; color: white;
+            padding: 5px 15px; border-radius: 20px; font-size: 0.95em; margin-top: 10px; font-weight: 600;
+        }
+        .container { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding-bottom: 80px; }
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 12px; width: 340px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25); overflow: hidden; transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-4px); }
+        .card-header { background: #1a5f7a; color: white; padding: 12px 15px; text-align: center; font-size: 1.1em; font-weight: 700; }
+        .card-body { padding: 18px; }
+        label { font-weight: 600; color: #2c3e50; font-size: 0.88em; margin: 12px 0 5px; display: block; }
+        label i { color: #28a745; margin-right: 5px; }
+        select, input[type="text"] {
+            width: 100%; padding: 9px 10px; font-family: 'Poppins', sans-serif;
+            font-size: 13px; border: 2px solid #e0e0e0; border-radius: 7px; transition: border-color 0.2s; background: #fff;
+        }
+        select:focus, input:focus { border-color: #28a745; outline: none; }
+        .color-box {
+            padding: 9px; text-align: center; font-weight: 600; font-size: 0.9em;
+            border: 2px dashed #ccc; border-radius: 7px; background: #f9f9f9; margin: 8px 0 12px; transition: all 0.3s;
+        }
+        table { width: 100%; border-collapse: separate; border-spacing: 0 5px; margin: 8px 0 15px; }
+        td { padding: 0; vertical-align: middle; }
+        td:first-child { width: 42%; font-size: 0.82em; font-weight: 600; color: #555; padding-right: 8px; white-space: nowrap; }
+        td input { margin: 0; padding: 7px 8px; font-size: 13px; }
+        .btn-valider {
+            background: linear-gradient(135deg, #28a745, #1e7e34); color: white; border: none;
+            padding: 13px; width: 100%; border-radius: 8px; font-size: 1em; font-weight: 700;
+            font-family: 'Poppins', sans-serif; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            box-shadow: 0 4px 12px rgba(40,167,69,0.4); transition: all 0.2s;
+        }
+        .btn-valider:hover { transform: translateY(-2px); }
+        .card-validee { padding: 18px; }
+        .validee-header {
+            display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+            padding: 10px 15px; border-radius: 8px; margin-bottom: 12px;
+        }
+        .validee-header .pays-nom { font-size: 1.15em; font-weight: 800; }
+        .validee-header .classe-badge {
+            background: rgba(255,255,255,0.3); padding: 3px 10px;
+            border-radius: 12px; font-size: 0.85em; font-weight: 600;
+        }
+        .validee-joueurs { list-style: none; padding: 0; }
+        .validee-joueurs li {
+            padding: 6px 10px; border-radius: 6px; margin-bottom: 5px;
+            background: #f8f9fa; font-size: 0.88em; display: flex; align-items: center; gap: 8px;
+        }
+        .validee-joueurs li i { color: #1a5f7a; width: 14px; }
+        .badge-pris {
+            background: #28a745; color: white; font-size: 0.75em;
+            padding: 2px 8px; border-radius: 10px; margin-left: auto; font-weight: 600;
+        }
+        .btn-acces-prof {
+            position: fixed; bottom: 20px; right: 20px;
+            background: rgba(26,95,122,0.92); color: white;
+            padding: 12px 22px; border-radius: 30px; border: none; cursor: pointer;
+            font-family: 'Poppins', sans-serif; font-size: 0.95em; font-weight: 600;
+            backdrop-filter: blur(5px); box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 500; display: flex; align-items: center; gap: 8px; transition: all 0.2s;
+        }
+        .btn-acces-prof:hover { background: #1a5f7a; transform: scale(1.05); }
+        #login-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.88); justify-content: center; align-items: center; z-index: 1000;
+        }
+        .login-box {
+            background: white; padding: 35px 40px; border-radius: 12px;
+            text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.4); max-width: 320px; width: 90%;
+        }
+        .login-box h2 { color: #1a5f7a; margin-bottom: 10px; }
+        .login-box p { color: #555; margin-bottom: 20px; font-size: 0.9em; }
+        #code-prof {
+            font-size: 26px; text-align: center; letter-spacing: 8px; width: 160px;
+            padding: 10px; border: 2px solid #ccc; border-radius: 8px; margin: 0 auto 20px; display: block;
+        }
+        .btn-group { display: flex; gap: 10px; justify-content: center; }
+        .btn { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; font-weight: 600; }
+        .btn-green { background: #28a745; color: white; }
+        .btn-gray { background: #6c757d; color: white; }
+        #dashboard-prof {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #f4f7f6; z-index: 900; overflow-y: auto; padding: 20px;
+        }
+        .dash-header {
+            background: #1a5f7a; color: white; padding: 18px 25px; border-radius: 10px;
+            margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .dash-header h2 { font-size: 1.3em; }
+        .btn-close-dash { background: #dc3545; color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .equipe-card {
+            background: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 5px solid #1a5f7a;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+        }
+        .equipe-info h3 { margin: 0 0 8px; color: #1a5f7a; }
+        .joueurs-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+        .badge-j { background: #e9ecef; padding: 4px 10px; border-radius: 15px; font-size: 0.82em; color: #444; }
+        .btn-suppr { background: #dc3545; color: white; border: none; padding: 9px 15px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <!-- Ballons flottants animés -->
+    <div class="ballon" style="left:5%;  animation-duration:18s; animation-delay:0s;">⚽</div>
+    <div class="ballon" style="left:20%; animation-duration:22s; animation-delay:4s;">⚽</div>
+    <div class="ballon" style="left:40%; animation-duration:16s; animation-delay:8s;">⚽</div>
+    <div class="ballon" style="left:60%; animation-duration:25s; animation-delay:2s;">⚽</div>
+    <div class="ballon" style="left:75%; animation-duration:20s; animation-delay:6s;">⚽</div>
+    <div class="ballon" style="left:90%; animation-duration:14s; animation-delay:10s;">⚽</div>
+
+    <div class="header-app">
+        <h1><i class="fas fa-trophy" style="color:#FFD700;"></i> Coupe du Monde de Rouillac 2026</h1>
+        <p><i class="fas fa-school"></i> Collège Claudie Haigneré — Inscription des équipes EPS</p>
+        <div class="compteur"><i class="fas fa-users"></i> Équipes inscrites : <span id="nb-equipes">0</span> / 16</div>
+    </div>
+
+    <div class="container">
+        
+        <div class="card" id="card_1">
+            <div class="card-header" id="card-header_1">Équipe 1</div>
+            <div class="card-body" id="card-body_1">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_1" onchange="updateColor(1)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_1" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_1">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_1" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_1" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_1" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_1" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_1" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_1" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_1" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(1)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_1" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_2">
+            <div class="card-header" id="card-header_2">Équipe 2</div>
+            <div class="card-body" id="card-body_2">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_2" onchange="updateColor(2)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_2" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_2">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_2" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_2" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_2" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_2" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_2" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_2" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_2" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(2)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_2" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_3">
+            <div class="card-header" id="card-header_3">Équipe 3</div>
+            <div class="card-body" id="card-body_3">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_3" onchange="updateColor(3)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_3" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_3">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_3" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_3" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_3" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_3" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_3" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_3" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_3" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(3)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_3" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_4">
+            <div class="card-header" id="card-header_4">Équipe 4</div>
+            <div class="card-body" id="card-body_4">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_4" onchange="updateColor(4)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_4" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_4">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_4" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_4" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_4" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_4" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_4" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_4" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_4" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(4)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_4" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_5">
+            <div class="card-header" id="card-header_5">Équipe 5</div>
+            <div class="card-body" id="card-body_5">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_5" onchange="updateColor(5)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_5" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_5">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_5" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_5" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_5" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_5" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_5" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_5" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_5" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(5)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_5" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_6">
+            <div class="card-header" id="card-header_6">Équipe 6</div>
+            <div class="card-body" id="card-body_6">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_6" onchange="updateColor(6)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_6" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_6">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_6" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_6" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_6" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_6" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_6" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_6" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_6" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(6)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_6" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_7">
+            <div class="card-header" id="card-header_7">Équipe 7</div>
+            <div class="card-body" id="card-body_7">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_7" onchange="updateColor(7)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_7" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_7">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_7" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_7" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_7" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_7" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_7" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_7" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_7" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(7)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_7" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_8">
+            <div class="card-header" id="card-header_8">Équipe 8</div>
+            <div class="card-body" id="card-body_8">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_8" onchange="updateColor(8)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_8" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_8">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_8" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_8" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_8" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_8" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_8" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_8" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_8" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(8)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_8" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_9">
+            <div class="card-header" id="card-header_9">Équipe 9</div>
+            <div class="card-body" id="card-body_9">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_9" onchange="updateColor(9)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_9" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_9">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_9" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_9" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_9" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_9" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_9" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_9" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_9" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(9)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_9" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_10">
+            <div class="card-header" id="card-header_10">Équipe 10</div>
+            <div class="card-body" id="card-body_10">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_10" onchange="updateColor(10)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_10" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_10">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_10" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_10" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_10" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_10" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_10" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_10" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_10" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(10)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_10" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_11">
+            <div class="card-header" id="card-header_11">Équipe 11</div>
+            <div class="card-body" id="card-body_11">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_11" onchange="updateColor(11)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_11" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_11">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_11" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_11" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_11" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_11" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_11" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_11" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_11" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(11)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_11" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_12">
+            <div class="card-header" id="card-header_12">Équipe 12</div>
+            <div class="card-body" id="card-body_12">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_12" onchange="updateColor(12)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_12" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_12">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_12" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_12" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_12" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_12" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_12" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_12" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_12" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(12)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_12" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_13">
+            <div class="card-header" id="card-header_13">Équipe 13</div>
+            <div class="card-body" id="card-body_13">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_13" onchange="updateColor(13)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_13" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_13">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_13" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_13" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_13" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_13" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_13" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_13" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_13" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(13)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_13" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_14">
+            <div class="card-header" id="card-header_14">Équipe 14</div>
+            <div class="card-body" id="card-body_14">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_14" onchange="updateColor(14)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_14" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_14">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_14" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_14" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_14" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_14" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_14" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_14" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_14" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(14)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_14" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_15">
+            <div class="card-header" id="card-header_15">Équipe 15</div>
+            <div class="card-body" id="card-body_15">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_15" onchange="updateColor(15)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_15" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_15">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_15" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_15" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_15" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_15" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_15" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_15" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_15" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(15)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_15" style="display:none;"></div>
+        </div>
+        <div class="card" id="card_16">
+            <div class="card-header" id="card-header_16">Équipe 16</div>
+            <div class="card-body" id="card-body_16">
+                <label><i class="fas fa-globe-americas"></i> 1. Équipe nationale :</label>
+                <select id="team_16" onchange="updateColor(16)"><option value="">-- Choisissez un pays --</option>
+<option value="France">France</option>
+<option value="Argentine">Argentine</option>
+<option value="Brésil">Brésil</option>
+<option value="Angleterre">Angleterre</option>
+<option value="Allemagne">Allemagne</option>
+<option value="Espagne">Espagne</option>
+<option value="Portugal">Portugal</option>
+<option value="Mexique">Mexique</option>
+<option value="États-Unis">États-Unis</option>
+<option value="Canada">Canada</option>
+<option value="Sénégal">Sénégal</option>
+<option value="Japon">Japon</option>
+<option value="Maroc">Maroc</option>
+<option value="Suisse">Suisse</option>
+<option value="Croatie">Croatie</option>
+<option value="Colombie">Colombie</option>
+</select>
+                <div id="color_16" class="color-box"><i class="fas fa-tshirt"></i> Couleur : En attente</div>
+                <label><i class="fas fa-graduation-cap"></i> 2. Niveau de classe :</label>
+                <select id="classe_16">
+                    <option value="">-- Choisissez le niveau --</option>
+                    <option value="6e">6ème</option>
+                    <option value="5e">5ème</option>
+                    <option value="4e">4ème</option>
+                    <option value="3e">3ème</option>
+                </select>
+                <label><i class="fas fa-users"></i> 3. Effectif :</label>
+                <table>
+                    <tr><td><i class="fas fa-whistle"></i> Arbitre/Joueur</td><td><input type="text" id="j1_16" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 2</td><td><input type="text" id="j2_16" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 3</td><td><input type="text" id="j3_16" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 4</td><td><input type="text" id="j4_16" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 5</td><td><input type="text" id="j5_16" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 6</td><td><input type="text" id="j6_16" placeholder="Nom & Prénom"></td></tr>
+                    <tr><td><i class="fas fa-user"></i> Joueur 7</td><td><input type="text" id="j7_16" placeholder="Nom & Prénom"></td></tr>
+                </table>
+                <button class="btn-valider" onclick="validerEquipe(16)">
+                    <i class="fas fa-check-circle"></i> Valider cette équipe
+                </button>
+            </div>
+            <div class="card-validee" id="card-validee_16" style="display:none;"></div>
+        </div>
+    </div>
+
+    <button class="btn-acces-prof" onclick="document.getElementById('login-modal').style.display='flex'">
+        <i class="fas fa-lock"></i> Accès Professeur
+    </button>
+
+    <div id="login-modal">
+        <div class="login-box">
+            <h2><i class="fas fa-shield-alt"></i> Accès Réservé</h2>
+            <p>Saisissez le code professeur.</p>
+            <input type="password" id="code-prof" maxlength="5" placeholder="•••••">
+            <div class="btn-group">
+                <button class="btn btn-green" onclick="verifierCode()"><i class="fas fa-check"></i> Valider</button>
+                <button class="btn btn-gray" onclick="document.getElementById('login-modal').style.display='none'">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard-prof">
+        <div class="dash-header">
+            <h2><i class="fas fa-clipboard-list"></i> Équipes inscrites — Temps réel</h2>
+            <button class="btn-close-dash" onclick="document.getElementById('dashboard-prof').style.display='none'">
+                <i class="fas fa-times"></i> Fermer
+            </button>
+        </div>
+        <div id="equipes-list" style="max-width:900px; margin:0 auto;"></div>
+        <p id="empty-msg" style="display:none; text-align:center; color:#888; margin-top:40px;">Aucune équipe inscrite pour le moment.</p>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, serverTimestamp }
+            from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyB475MQ5DD_xXZlVHKDbcrPcciLSr7FGto",
+            authDomain: "cdm-rouillac.firebaseapp.com",
+            projectId: "cdm-rouillac",
+            storageBucket: "cdm-rouillac.firebasestorage.app",
+            messagingSenderId: "650773834321",
+            appId: "1:650773834321:web:548059c60d8d3340b82670"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const teams = {
+            "France": { color: "Bleu", bg: "#002395", txt: "#ffffff" },
+            "Argentine": { color: "Bleu ciel et blanc", bg: "#75aadb", txt: "#ffffff" },
+            "Brésil": { color: "Jaune", bg: "#FFDF00", txt: "#009c3b" },
+            "Angleterre": { color: "Blanc", bg: "#ffffff", txt: "#ce1126" },
+            "Allemagne": { color: "Blanc", bg: "#000000", txt: "#ffffff" },
+            "Espagne": { color: "Rouge", bg: "#c60b1e", txt: "#ffffff" },
+            "Portugal": { color: "Rouge et vert", bg: "#E42518", txt: "#ffffff" },
+            "Mexique": { color: "Vert", bg: "#006847", txt: "#ffffff" },
+            "États-Unis": { color: "Blanc et rouge", bg: "#B31942", txt: "#ffffff" },
+            "Canada": { color: "Rouge", bg: "#FF0000", txt: "#ffffff" },
+            "Sénégal": { color: "Vert", bg: "#00853f", txt: "#ffffff" },
+            "Japon": { color: "Bleu", bg: "#000555", txt: "#ffffff" },
+            "Maroc": { color: "Rouge", bg: "#c1272d", txt: "#ffffff" },
+            "Suisse": { color: "Rouge", bg: "#FF0000", txt: "#ffffff" },
+            "Croatie": { color: "Damier rouge/blanc", bg: "#ffffff", txt: "#ff0000" },
+            "Colombie": { color: "Jaune", bg: "#FCD116", txt: "#003893" },
+        };
+
+        window.updateColor = function(id) {
+            const val = document.getElementById('team_' + id).value;
+            const box = document.getElementById('color_' + id);
+            if(val && teams[val]) {
+                box.innerHTML = '<i class="fas fa-tshirt"></i> Couleur : ' + teams[val].color;
+                box.style.backgroundColor = teams[val].bg;
+                box.style.color = teams[val].txt;
+                box.style.border = '2px solid ' + teams[val].bg;
+            } else {
+                box.innerHTML = '<i class="fas fa-tshirt"></i> Couleur : En attente';
+                box.style.backgroundColor = '#f9f9f9';
+                box.style.color = '#333';
+                box.style.border = '2px dashed #ccc';
+            }
+        };
+
+        window.validerEquipe = async function(id) {
+            const pays   = document.getElementById('team_' + id).value;
+            const classe = document.getElementById('classe_' + id).value;
+            const j1     = document.getElementById('j1_' + id).value.trim();
+            if(!pays || !classe || !j1) {
+                alert("Merci de choisir le pays, la classe et de renseigner l'arbitre/joueur 1 !");
+                return;
+            }
+            const btn = document.querySelector('#card_' + id + ' .btn-valider');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
+            btn.style.background = '#1a5f7a'; btn.disabled = true;
+            try {
+                const joueurs = [j1];
+                for(let k=2; k<=7; k++) joueurs.push(document.getElementById('j'+k+'_'+id).value.trim());
+                await addDoc(collection(db, "inscriptions_rouillac"), {
+                    slotId: id, pays, classe, joueurs, date_inscription: serverTimestamp()
+                });
+            } catch(e) {
+                console.error(e);
+                alert("Erreur réseau. Réessayez.");
+                btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Réessayer';
+                btn.style.background = '#dc3545'; btn.disabled = false;
+            }
+        };
+
+        onSnapshot(collection(db, "inscriptions_rouillac"), (snapshot) => {
+            for(let i=1; i<=16; i++) {
+                const body = document.getElementById('card-body_' + i);
+                const validee = document.getElementById('card-validee_' + i);
+                const header = document.getElementById('card-header_' + i);
+                if(body && validee) {
+                    body.style.display = 'block';
+                    validee.style.display = 'none';
+                    validee.innerHTML = '';
+                    header.style.background = '#1a5f7a';
+                    header.style.color = 'white';
+                    header.textContent = 'Équipe ' + i;
+                }
+            }
+            let count = 0;
+            snapshot.forEach((docSnap) => {
+                const d = docSnap.data();
+                const id = d.slotId;
+                if(!id) return;
+                count++;
+                const body    = document.getElementById('card-body_' + id);
+                const validee = document.getElementById('card-validee_' + id);
+                const header  = document.getElementById('card-header_' + id);
+                if(!body || !validee) return;
+                if(teams[d.pays]) {
+                    header.style.background = teams[d.pays].bg;
+                    header.style.color = teams[d.pays].txt;
+                    header.textContent = '⚽ ' + d.pays + ' — Équipe ' + id;
+                }
+                body.style.display = 'none';
+                validee.style.display = 'block';
+                let joueursHtml = d.joueurs.map((j, i) => {
+                    if(!j) return '';
+                    const icon = i === 0 ? 'fa-whistle' : 'fa-user';
+                    const role = i === 0 ? 'Arbitre/Joueur' : 'Joueur ' + (i+1);
+                    return `<li><i class="fas ${icon}"></i> <strong>${role} :</strong> ${j}</li>`;
+                }).join('');
+                validee.innerHTML = `
+                    <div class="validee-header" style="background:${teams[d.pays] ? teams[d.pays].bg : '#1a5f7a'}; color:${teams[d.pays] ? teams[d.pays].txt : '#fff'};">
+                        <i class="fas fa-check-circle" style="font-size:1.4em;"></i>
+                        <span class="pays-nom">${d.pays}</span>
+                        <span class="classe-badge">Classe ${d.classe}</span>
+                        <span class="badge-pris">✅ Prise</span>
+                    </div>
+                    <ul class="validee-joueurs">${joueursHtml}</ul>`;
+            });
+            document.getElementById('nb-equipes').textContent = count;
+        });
+
+        window.verifierCode = function() {
+            if(document.getElementById('code-prof').value === '16170') {
+                document.getElementById('login-modal').style.display = 'none';
+                document.getElementById('dashboard-prof').style.display = 'block';
+                document.getElementById('code-prof').value = '';
+                chargerDashboard();
+            } else {
+                alert('Code incorrect !');
+                document.getElementById('code-prof').value = '';
+            }
+        };
+
+        let unsubscribe = null;
+        function chargerDashboard() {
+            if(unsubscribe) unsubscribe();
+            const list = document.getElementById('equipes-list');
+            const emptyMsg = document.getElementById('empty-msg');
+            unsubscribe = onSnapshot(collection(db, "inscriptions_rouillac"), (snapshot) => {
+                list.innerHTML = '';
+                if(snapshot.empty) { emptyMsg.style.display = 'block'; return; }
+                emptyMsg.style.display = 'none';
+                snapshot.forEach((docSnap) => {
+                    const d = docSnap.data();
+                    const badges = d.joueurs.filter(j => j).map((j, i) =>
+                        `<span class="badge-j"><i class="${i===0 ? 'fas fa-whistle' : 'fas fa-user'}"></i> ${j}</span>`
+                    ).join('');
+                    list.innerHTML += `
+                        <div class="equipe-card">
+                            <div class="equipe-info">
+                                <h3>${d.pays} — Équipe ${d.slotId} — Classe ${d.classe}</h3>
+                                <div class="joueurs-wrap">${badges}</div>
+                            </div>
+                            <button class="btn-suppr" onclick="supprimerEquipe('${docSnap.id}','${d.pays}')">
+                                <i class="fas fa-trash-alt"></i> Effacer
+                            </button>
+                        </div>`;
+                });
+            });
+        }
+
+        window.supprimerEquipe = async function(docId, pays) {
+            if(confirm(`Effacer définitivement l\'équipe "${pays}" et remettre le slot à zéro ?`)) {
+                try { await deleteDoc(doc(db, "inscriptions_rouillac", docId)); }
+                catch(e) { alert("Erreur lors de la suppression."); }
+            }
+        };
+    </script>
+</body>
+</html>
